@@ -26,7 +26,7 @@ The tool uses a object-oriented programming approach to define 3 classes:
 
 ## Tool Usage 
 ### Defining a Satellite
-A `Satellite` object's orbit is defined using its Keplerian orbital parameters around its central body. 
+A `Satellite` object's orbit is defined using its Keplerian orbital elements around its central body. 
 
 `Satellite` class properties:
 - Name (name), Satellite's name
@@ -71,7 +71,7 @@ Sat2.propagate
 ![Sat2 Orbit](./Images/Documentation/Sat2Orbit.png)
 
 ### Defining a CelestialBody 
-A `CelestialBody` object inherits the properties of the `Satellite` class, effectively acting as an object around its respective central body (e.g. Earth is in orbit around the Sun).  
+A `CelestialBody` object inherits the properties of the `Satellite` class, effectively acting as an object in orbit around its respective central body (e.g. Earth is in orbit around the Sun).  
 Stars, planets, moons, and asteroids can be created as `CelestialBody` objects, allowing for `Satellite` orbits to be propagated around them.
 
 `CelestialBody` non-inherited properties:
@@ -89,7 +89,7 @@ To create a central body that a `Satellite` can orbit around, the following appr
 % In Command Window 
 
 Earth = Satellite(...); % Define its own orbital elements around its central body
-Earth = CelestialBody(mu, radius, texture, Earth); 
+Earth = CelestialBody(3.986e5, 6378, "Earth.jpg", Earth); 
 ```
 
 2.) Define a default `CelestialBody` then modify properties
@@ -109,7 +109,7 @@ Asteroid.texture = "Asteroid.jpg";
 ```
 % In Command Window
 
-load("Planets.mat"); % loads planets in Solar System to workspace
+load("Planets.mat"); % loads the Sun and planets in the solar system to workspace
 
 % 9 Pre-defined Celestial Bodies:
 % Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
@@ -149,7 +149,7 @@ for more advanced orbit propagation and mission design capability.
 - Satellites (sats), Array of `Satellite` objects
 - Celestial Bodies (celesbodies), Array of `CelestialBody` objects
 
-To create a system, the following approaches can be used:
+To create a system, the following approaches can be used:  
 1.) Define a `System` of satellites around a central body (e.g. GPS constellation)
 ```
 % In Command Window
